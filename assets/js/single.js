@@ -9,7 +9,7 @@ var getRepoIssues = function(repo) {
     fetch(apiUrl).then(function(response) {
         //request was successful
         if (response.ok) {
-            respose.json().then(function(data) {
+            response.json().then(function(data) {
                 displayIssues(data);
             
                 //check if api has paginated issues
@@ -23,8 +23,6 @@ var getRepoIssues = function(repo) {
             console.log(response);
             alert("There was a problem with your request!");
         }
-
-
     });
 };
 
@@ -38,7 +36,7 @@ var displayIssues = function(issues) {
         //create a link element to take users to the issue on github
         var issueEl = document.createElement("a");
         issueEl.classList = "list-item flex-row justify-space-between align-center";
-        issueEl.setAttribute("href", issue[i].html_url);
+        issueEl.setAttribute("href", issues[i].html_url);
         issueEl.setAttribute("target", "_blanck");
 
         //create span to hold issue title
